@@ -9,7 +9,7 @@ from ansible.module_utils.basic import os
 
 try:
     HAS_CX_ORACLE = True
-    import cx_Oracle
+    import oracledb as cx_Oracle
 except ImportError:
     HAS_CX_ORACLE = False
 

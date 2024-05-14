@@ -96,7 +96,7 @@ options:
         type: str
         aliases: ['parameter']
 requirements:
-    - Python module cx_Oracle
+    - Python module oracledb
     - Oracle basic tools.
 notes:
     - Check mode is supported.

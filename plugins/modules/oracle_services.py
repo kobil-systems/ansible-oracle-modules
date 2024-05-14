@@ -104,8 +104,8 @@ options:
         aliases: ['un', 'username']
         type: str
 notes:
-    - cx_Oracle needs to be installed
-requirements: [ "cx_Oracle" ]
+    - oracledb needs to be installed
+requirements: [ "oracledb" ]
 '''
 
 EXAMPLES = '''
@@ -145,7 +145,7 @@ EXAMPLES = '''
 '''
 
 try:
-    import cx_Oracle
+    import oracledb as cx_Oracle
 except ImportError:
     cx_oracle_exists = False
 else:
@@ -432,9 +432,9 @@ def main():
     else:
         gimanaged = False
         if not cx_oracle_exists:
-            module.fail_json(msg="System doesn\'t seem to be managed by GI, so the cx_Oracle module is required."
-                                 " 'pip install cx_Oracle' should do the trick."
-                                 " If cx_Oracle is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set")
+            module.fail_json(msg="System doesn\'t seem to be managed by GI, so the oracledb module is required."
+                                 " 'pip install oracledb' should do the trick."
+                                 " If oracledb is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set")
 
         else:
             if not service_name:
@@ -455,7 +455,7 @@ def main():
                     connect = dsn
                     conn = cx_Oracle.connect(user, password, dsn)
                 elif not user or not password:
-                    module.fail_json(msg='Missing username or password for cx_Oracle')
+                    module.fail_json(msg='Missing username or password for oracledb')
 
             except cx_Oracle.DatabaseError as exc:
                 error, = exc.args

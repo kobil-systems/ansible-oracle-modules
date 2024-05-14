@@ -70,7 +70,7 @@ options:
         type: str
         aliases: ['user']
 requirements:
-    - Python module cx_Oracle
+    - Python module oracledb
     - Oracle basic tools.
 notes:
     - Check mode is supported and won't change anything as this module don't make anything.

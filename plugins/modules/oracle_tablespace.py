@@ -143,7 +143,7 @@ options:
         aliases:
             - user
 requirements:
-    - Python module cx_Oracle
+    - Python module oracledb
     - Oracle basic tools.
 notes:
     - Check mode and diff mode are supported.

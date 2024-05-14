@@ -1,7 +1,7 @@
 ---
-- name: "install cx_Oracle"
+- name: "install oracledb"
   pip:
-    name: "cx_Oracle"
+    name: "oracledb"
     state: "present"
 
 - block:

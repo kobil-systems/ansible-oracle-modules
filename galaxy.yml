@@ -1,10 +1,11 @@
 namespace: "ari_stark"
 name: "ansible_oracle_modules"
-version: "1.2.1"
+version: "1.3.0"
 readme: "README.md"
 authors:
   - "Ari Stark"
   - "Mikael Sandström <oravirt@gmail.com>"
+  - "Denis Barleben <denis.barleben@kobil.com>"
 description: "Modules for working with Oracle Database"
 license:
   - "MIT"

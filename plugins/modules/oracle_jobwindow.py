@@ -86,9 +86,9 @@ options:
         type: int
 
 notes:
-    - cx_Oracle needs to be installed
+    - oracledb needs to be installed
     - Oracle RDBMS 10gR2 or later required
-requirements: [ "cx_Oracle", "datetime" ]
+requirements: [ "oracledb", "datetime" ]
 author: Ilmar Kerm, ilmar.kerm@gmail.com, @ilmarkerm
 '''
 
@@ -123,7 +123,7 @@ EXAMPLES = '''
 from datetime import timedelta
 
 try:
-    import cx_Oracle
+    import oracledb as cx_Oracle
 except ImportError:
     cx_oracle_exists = False
 else:
@@ -170,7 +170,7 @@ def main():
     )
     # Check for required modules
     if not cx_oracle_exists:
-        module.fail_json(msg="The cx_Oracle module is required. 'pip install cx_Oracle' should do the trick.")
+        module.fail_json(msg="The oracledb module is required. 'pip install oracledb' should do the trick.")
     # Check input parameters
     job_fullname = module.params['name'].upper()
     if module.params['duration_min'] is None and module.params['duration_hour'] is None:
@@ -209,7 +209,7 @@ def main():
                 conn = cx_Oracle.connect(user, password, dsn)
 
         elif not user or not password:
-            module.fail_json(msg='Missing username or password for cx_Oracle')
+            module.fail_json(msg='Missing username or password for oracledb')
 
     except cx_Oracle.DatabaseError as exc:
         error, = exc.args

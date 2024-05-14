@@ -8,7 +8,7 @@ __metaclass__ = type
 from ansible.module_utils.basic import AnsibleModule, re
 
 try:
-    import cx_Oracle
+    import oracledb as cx_Oracle
 except ImportError:
     cx_oracle_exists = False
 else:
@@ -78,9 +78,9 @@ options:
         type: bool
 
 notes:
-    - cx_Oracle needs to be installed
+    - oracledb needs to be installed
     - Oracle RDBMS 10gR2 or later required
-requirements: [ "cx_Oracle", "re" ]
+requirements: [ "oracledb", "re" ]
 author: Ilmar Kerm, ilmar.kerm@gmail.com, @ilmarkerm
 '''
 
@@ -147,8 +147,8 @@ def main():
     # Check for required modules
     if not cx_oracle_exists:
         module.fail_json(
-            msg="The cx_Oracle module is required. 'pip install cx_Oracle' should do the trick."
-                " If cx_Oracle is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set")
+            msg="The oracledb module is required. 'pip install oracledb' should do the trick."
+                " If oracledb is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set")
     # Check input parameters
     re_name = re.compile(r"^[A-Za-z0-9_$#]+\.[A-Za-z0-9_$#]+$")
     if not re_name.match(module.params['name']):
@@ -186,7 +186,7 @@ def main():
                 conn = cx_Oracle.connect(user, password, dsn)
 
         elif not user or not password:
-            module.fail_json(msg='Missing username or password for cx_Oracle')
+            module.fail_json(msg='Missing username or password for oracledb')
 
     except cx_Oracle.DatabaseError as exc:
         error, = exc.args

@@ -8,7 +8,7 @@ __metaclass__ = type
 from ansible.module_utils.basic import AnsibleModule, os, re, subprocess
 
 try:
-    import cx_Oracle
+    import oracledb as cx_Oracle
 except ImportError:
     cx_oracle_exists = False
 else:
@@ -89,8 +89,8 @@ options:
         required: false
         default: 1521
 notes:
-    - cx_Oracle needs to be installed
-requirements: [ "cx_Oracle" ]
+    - oracledb needs to be installed
+requirements: [ "oracledb" ]
 author: Mikael Sandström, oravirt@gmail.com, @oravirt
 '''
 
@@ -267,8 +267,8 @@ def main():
         gimanaged = False
 
     if not cx_oracle_exists:
-        msg = "The cx_Oracle module is required. 'pip install cx_Oracle' should do the trick." \
-              " If cx_Oracle is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set"
+        msg = "The oracledb module is required. 'pip install oracledb' should do the trick." \
+              " If oracledb is installed, make sure ORACLE_HOME & LD_LIBRARY_PATH is set"
         module.fail_json(msg=msg)
 
     # Connection details for database

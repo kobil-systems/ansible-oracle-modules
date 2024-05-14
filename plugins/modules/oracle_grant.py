@@ -95,7 +95,7 @@ options:
             - Must not be set if using Oracle wallet.
         type: str
 requirements:
-    - Python module cx_Oracle
+    - Python module oracledb
     - Oracle basic tools.
 notes:
     - Check mode and diff mode are supported.
